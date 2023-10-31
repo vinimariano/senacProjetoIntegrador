@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34018.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "senac.projetoIntegrador", "senac.projetoIntegrador.csproj", "{F7B89889-0541-4962-B688-42B68AF2E5ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "senac.projetoIntegrador.Repositories", "..\senac.projetoIntegrador.Repositories\senac.projetoIntegrador.Repositories.csproj", "{79D51FC9-0876-4768-BD3A-BD68F1200CBD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7B89889-0541-4962-B688-42B68AF2E5ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7B89889-0541-4962-B688-42B68AF2E5ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7B89889-0541-4962-B688-42B68AF2E5ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7B89889-0541-4962-B688-42B68AF2E5ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79D51FC9-0876-4768-BD3A-BD68F1200CBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79D51FC9-0876-4768-BD3A-BD68F1200CBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79D51FC9-0876-4768-BD3A-BD68F1200CBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79D51FC9-0876-4768-BD3A-BD68F1200CBD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6919D572-C7C6-4585-9CA9-5F30E291A206}
+	EndGlobalSection
+EndGlobal
