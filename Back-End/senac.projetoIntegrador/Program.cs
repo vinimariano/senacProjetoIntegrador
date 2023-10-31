@@ -1,15 +1,26 @@
+using Microsoft.Extensions.Configuration;
+using senac.projetoIntegrador.Authentication;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+JwtSettings settings = builder.Configuration
+    .GetSection("JwtToken")
+    .Get<JwtSettings>();
+
+ConfigureJwt configure = 
+    new ConfigureJwt(settings);
+
+builder.Services.AddSingleton<JwtSettings>(settings);
+builder.Services.AddSingleton<ConfigureJwt>(configure);
+
+configure.ConfigureJwtMethod(builder.Services);
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -18,6 +29,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors(options =>
+    options.WithOrigins(settings.Issuer)
+    .AllowAnyMethod().AllowAnyHeader()
+    );
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
