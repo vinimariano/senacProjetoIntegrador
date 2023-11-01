@@ -42,7 +42,7 @@ JwtSettings settings = builder.Configuration
     .GetSection("JwtToken")
     .Get<JwtSettings>();
 
-ConfigureJwt configure = 
+ConfigureJwt configure =
     new ConfigureJwt(settings);
 
 //Registra as dependências
@@ -57,11 +57,8 @@ configure.ConfigureJwtMethod(builder.Services);
 //Builda o Contâiner
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
