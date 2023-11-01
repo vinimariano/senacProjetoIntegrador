@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\senac.projetoIntegrador.Domain\senac.projetoIntegrador.Domain.csproj" />
     <ProjectReference Include="..\senac.projetoIntegrador.Repositories\senac.projetoIntegrador.Repositories.csproj" />
   </ItemGroup>
 

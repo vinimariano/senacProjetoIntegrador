@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.AspNetCore.Mvc;
 using senac.projetoIntegrador.Authentication;
-using senac.projetoIntegrador.Models;
+using senac.projetoIntegrador.Domain.Models;
 
 namespace senac.projetoIntegrador.Controllers
 {

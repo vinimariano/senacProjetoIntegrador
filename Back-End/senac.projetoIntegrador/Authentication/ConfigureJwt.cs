@@ -38,6 +38,8 @@ namespace senac.projetoIntegrador.Authentication
                     ClockSkew = TimeSpan.FromMinutes(_jwtSettings.MinutesToExpiration)
                 };
             });
+
+            services.AddAuthorization();
         }
 
         public string BuildJwtToken(string login)
