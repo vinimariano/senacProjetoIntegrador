@@ -38,6 +38,17 @@ builder.Services.AddSwaggerGen(c =>
                 });
 });
 
+string policyCors = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: policyCors,
+                      policy =>
+                      {
+                          policy.WithOrigins("*");
+                      });
+});
+
 JwtSettings settings = builder.Configuration
     .GetSection("JwtToken")
     .Get<JwtSettings>();
@@ -62,10 +73,7 @@ app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
-app.UseCors(options =>
-    options.WithOrigins(settings.Issuer)
-    .AllowAnyMethod().AllowAnyHeader()
-    );
+app.UseCors(policyCors);
 
 app.UseAuthentication();
 app.UseAuthorization();
