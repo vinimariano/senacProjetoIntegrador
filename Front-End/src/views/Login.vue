@@ -12,6 +12,9 @@
 <script setup>
 import loginBurger from "@/assets/bg-login.png";
 import { BASEURL } from "../../env";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const data = {
   login: "",
@@ -28,11 +31,14 @@ async function login() {
       body: JSON.stringify(data),
     });
 
+    console.log(response);
+
     if (response.ok) {
       const responseData = await response.json();
-      console.log(responseData);
+      localStorage.setItem("token", responseData.bearerToken);
+      router.push("/products");
     } else {
-      console.error("Erro ao fazer a solicitação POST.");
+      console.error("Erro na solicitação POST. Código de status:", response.status);
     }
   } catch (error) {
     console.error("Erro na solicitação POST:", error);
@@ -45,7 +51,7 @@ async function login() {
   background-image: url("@/assets/bg-login.png");
   height: 100vh;
   max-width: 100vw;
-  margin: -3.1em;
+  margin: -3.2em;
 }
 
 .form {

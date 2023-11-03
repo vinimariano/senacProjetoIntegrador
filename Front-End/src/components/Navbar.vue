@@ -5,7 +5,7 @@
         <img id="logo" :src="logo" />
       </router-link>
       <router-link to="/products">Fazer Pedido</router-link>
-      <router-link to="/cart">Carrinho</router-link>
+      <router-link @click="logout" to="/">Sair</router-link>
     </div>
   </div>
 </template>
@@ -15,6 +15,11 @@ export default {
   name: "Navbar",
   props: {
     logo: String,
+  },
+  methods: {
+    logout() {
+      localStorage.clear();
+    },
   },
 };
 </script>
