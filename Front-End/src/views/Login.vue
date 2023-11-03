@@ -40,7 +40,7 @@ async function login() {
 }
 </script>
 
-<style>
+<style scoped>
 .container {
   background-image: url("@/assets/bg-login.png");
   height: 100vh;
