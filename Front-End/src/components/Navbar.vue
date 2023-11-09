@@ -4,7 +4,10 @@
       <router-link id="logo-url" to="/">
         <img id="logo" :src="logo" />
       </router-link>
-      <router-link to="/products">Fazer Pedido</router-link>
+      <router-link v-if="$route.path !== '/cart'" to="/cart">Ver carrinho</router-link>
+      <router-link v-if="$route.path !== '/products'" to="/products"
+        >Ver produtos</router-link
+      >
       <router-link @click="logout" to="/">Sair</router-link>
     </div>
   </div>

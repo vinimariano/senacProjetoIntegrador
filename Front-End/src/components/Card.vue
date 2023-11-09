@@ -19,7 +19,7 @@ export default {
   name: "Card",
   props: {
     name: String,
-    price: String,
+    price: Number,
     image: String,
   },
 
@@ -28,6 +28,7 @@ export default {
       const item = {
         name: this.name,
         price: this.price,
+        image: this.image,
       };
 
       let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
@@ -45,7 +46,7 @@ export default {
         if (result.isConfirmed) {
           // Lógica para continuar comprando
         } else if (result.dismiss === "cancel") {
-         this.$router.push("/cart");
+          this.$router.push("/cart");
         }
       });
     },

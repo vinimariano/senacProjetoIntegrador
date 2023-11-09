@@ -9,6 +9,14 @@ const router = createRouter({
     {
       path: '/products',
       name: 'home',
+      beforeEnter: (to, from, next) => {
+        const userToken = localStorage.getItem('token');
+        if (userToken) {
+          next();
+        } else {
+          next({ name: 'login' });
+        }
+      },
       component: HomeView
     },
     {
@@ -19,6 +27,21 @@ const router = createRouter({
     {
       path: '/cart',
       name: 'cart',
+      beforeEnter: (to, from, next) => {
+        const userToken = localStorage.getItem('token');
+        if (userToken) {
+          next();
+        } else {
+          next({ name: 'login' });
+        }
+      },      beforeEnter: (to, from, next) => {
+        const userToken = localStorage.getItem('token');
+        if (userToken) {
+          next();
+        } else {
+          next({ name: 'login' });
+        }
+      },
       component: Cart
     }
   ]
