@@ -33,7 +33,7 @@ namespace senac.projetoIntegrador.Repositories.EmMemoria
             },
             new Produto
             {
-                Id = 3,
+                Id = 4,
                 Nome = "Veggie Burguer",
                 Descricao = "Hambúrguer vegetariano à base de vegetais, acompanhado de queijo, alface, tomate e maionese em um pão de hambúrguer.",
                 Preco = 6.99M,
@@ -41,7 +41,7 @@ namespace senac.projetoIntegrador.Repositories.EmMemoria
             },
             new Produto
             {
-                Id = 3,
+                Id = 5,
                 Nome = "Double Cheeseburger",
                 Descricao = "Dois hambúrgueres de carne, dupla porção de queijo, alface, tomate e maionese, servidos em um pão de hambúrguer.",
                 Preco = 10.99M,
