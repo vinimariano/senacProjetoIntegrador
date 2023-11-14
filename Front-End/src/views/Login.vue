@@ -4,7 +4,7 @@
       <h1 id="title">Login</h1>
       <input type="text" placeholder="Login" class="input" v-model="data.login" />
       <input type="password" placeholder="Senha" class="input" v-model="data.senha" />
-      <button class="button" @click="login">Enviar</button>
+      <button class="button" @click="login">Entrar</button>
     </div>
   </div>
 </template>
