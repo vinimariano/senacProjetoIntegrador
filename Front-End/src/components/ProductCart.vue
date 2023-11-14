@@ -1,32 +1,24 @@
 <template>
   <div class="container">
     <div class="burger">
-      <img id="image" :src="props.image" alt="Burger Image" />
+      <img id="image" :src="caminhoImagem" alt="Burger Image" />
       <div class="name-price">
-        <h1 id="title">{{ props.name }}</h1>
-        <h1 id="price">R$: {{ props.price }}</h1>
+        <h1 id="title">{{ nome }}</h1>
+        <h1 id="price">$: {{ preco }}</h1>
       </div>
     </div>
-    <button class="button" @click="login">Remover</button>
+    <button class="button" @click="removeItem(props)">Remover</button>
   </div>
 </template>
 
-<script>
+<script setup>
 import burger from "@/assets/burger.jpg";
-export default {
-  name: "productCart",
-  props: {
-    name: String,
-    price: Number,
-    image: String,
-  },
-  data(props) {
-    return {
-      burger: burger,
-      props,
-    };
-  },
-};
+
+const props = defineProps(["nome", "preco", "caminhoImagem", "descricao", "onRemove"]);
+
+function removeItem(item) {
+  props.onRemove(item);
+}
 </script>
 
 <style scoped>

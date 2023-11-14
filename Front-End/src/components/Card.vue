@@ -1,11 +1,11 @@
 <template>
   <div class="burger-card">
     <div class="burger-image">
-      <img :src="image" alt="Burger Image" />
+      <img :src="caminhoImagem" alt="Burger Image" />
     </div>
     <div class="burger-details">
-      <h2>{{ name }}</h2>
-      <h4>Preço: R$ {{ price }}</h4>
+      <h2>{{ nome }}</h2>
+      <h4>Preço: $ {{ preco }}</h4>
       <button @click="addCart">Adicionar ao carrinho</button>
     </div>
   </div>
@@ -18,17 +18,20 @@ import "vue-toast-notification/dist/theme-sugar.css";
 export default {
   name: "Card",
   props: {
-    name: String,
-    price: Number,
-    image: String,
+    nome: String,
+    preco: Number,
+    caminhoImagem: String,
+    descricao: String,
   },
 
   methods: {
     addCart() {
       const item = {
-        name: this.name,
-        price: this.price,
-        image: this.image,
+        id: this.id,
+        nome: this.nome,
+        preco: this.preco,
+        caminhoImagem: this.caminhoImagem,
+        descricao: this.descricao,
       };
 
       let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
@@ -44,7 +47,6 @@ export default {
         cancelButtonText: "Ver carrinho",
       }).then((result) => {
         if (result.isConfirmed) {
-          // Lógica para continuar comprando
         } else if (result.dismiss === "cancel") {
           this.$router.push("/cart");
         }

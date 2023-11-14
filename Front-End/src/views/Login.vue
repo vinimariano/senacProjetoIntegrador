@@ -31,11 +31,9 @@ async function login() {
       body: JSON.stringify(data),
     });
 
-    console.log(response);
-
     if (response.ok) {
       const responseData = await response.json();
-      localStorage.setItem("token", responseData.bearerToken);
+      localStorage.setItem("token", `bearer ${responseData.bearerToken}`);
       router.push("/products");
     } else {
       console.error("Erro na solicitação POST. Código de status:", response.status);
