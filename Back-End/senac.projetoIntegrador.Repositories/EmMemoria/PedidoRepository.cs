@@ -11,7 +11,15 @@ namespace senac.projetoIntegrador.Repositories.EmMemoria
 
         public int Create(Pedido pedido)
         {
-            throw new NotImplementedException();
+            //Incrementa o Id
+            int maximoId = _bancoDeDados.Any() ? _bancoDeDados.Max(x => x.Id) : 0;
+            pedido.Id = maximoId + 1;
+
+            //Salva o pedido
+            _bancoDeDados.Add(pedido);
+
+            //Retorna o Id
+            return pedido.Id;
         }
     }
 }
