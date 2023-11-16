@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using senac.projetoIntegrador.Domain.Models;
 using senac.projetoIntegrador.Domain.Repositories;
+using static senac.projetoIntegrador.Domain.Models.ListaDePedido;
 
 namespace senac.projetoIntegrador.Controllers
 {
@@ -19,7 +20,22 @@ namespace senac.projetoIntegrador.Controllers
         [HttpPost]
         public IActionResult Create([FromBody]Pedido pedido)
         {
-            return Created("", new { id = 1 });
+            if (pedido == null || pedido.Produtos.Any() != true)
+            {
+                return NotFound();
+            }
+            var Lista = new ListaDePedidos();
+
+            var i = 0;
+            decimal total = 0;
+            while (i < pedido.Produtos.Count)
+            {
+                total = total + pedido.Produtos[i].Preco;
+                i++;
+            }
+            pedido.Total = total;
+
+            return Created("", pedido.Id);
         }
     }
 }
