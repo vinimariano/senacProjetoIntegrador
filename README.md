@@ -3,7 +3,7 @@
 
 Essa é a primeira versão do nosso aplicativo **Codeclub**. 
 
-O nosso produto é destinado para restaurantes e estabelcimentos alimentícios que queiram apresentar os seus produtos diretamenta para os consumidores locais.
+O nosso produto é destinado para restaurantes e estabelcimentos alimentícios que queiram apresentar os seus produtos diretamente para os clientes locais.
   
   A nossa solução foi pensada para melhorar a experiência de consumidores em restaurantes. Ela ainda está em desenvolvimento e novas funcionalidades serão adicionadas no futuro. 
   
