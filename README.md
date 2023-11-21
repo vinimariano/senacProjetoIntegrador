@@ -4,8 +4,10 @@
 Esse é a primeira versão do nosso aplicativo **Codeclub**. 
 
 O nosso produto é destinado para restaurantes e estabelcimentos alimentícios que queiram apresentar os seus produtos diretamenta para os consumidores locais.
-A nossa solução foi pensada para melhorar a experiência de consumidores em restaurantes. Ela ainda está em desenvolvimento e novas funcionalidades serão adcionadas no futuro. 
-Tentamos desenvolver este projeto levando em consideração a metodologia ágil. Por conta do prazo, esta etapa do projeto foi feita em uma sprint. Fizemos reuniões online, visto que todos os participantes do grupo são de locais distintos do país. 
+  
+  A nossa solução foi pensada para melhorar a experiência de consumidores em restaurantes. Ela ainda está em desenvolvimento e novas funcionalidades serão adcionadas no futuro. 
+  
+  Tentamos desenvolver este projeto levando em consideração a metodologia ágil. Por conta do prazo, esta etapa do projeto foi feita em uma sprint. Fizemos reuniões online, visto que todos os participantes do grupo são de locais distintos do país. 
 Versões futuras 
 
 ## A estrutura do projeto 
