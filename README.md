@@ -18,7 +18,7 @@ As linguagens de programação utilizadas foram escolhidas com base nas experiê
 Utilizamos dados em memória para poder fazer essa primeira versão do projeto. No futuro, substituíremos modificaremos esse aspecto. 
   
   ### Front-End 
-O Front-End do projeto foi construído com Javascrip, HTML e CSS. Os visuais ainda estão em desenvolvimento e outros elementos ainda serão inseridos na tela de navegação dos clientes. 
+O Front-End do projeto foi construído com Javascrip e HTML. Os visuais ainda estão em desenvolvimento e outros elementos ainda serão inseridos na tela de navegação dos clientes. 
 ## Execução do projeto 
 
 Para acessar o aplicativo, basta entrar no link. 
