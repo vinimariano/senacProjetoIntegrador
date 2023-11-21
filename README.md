@@ -15,11 +15,14 @@ O trabalho é resultado dos esforços do grupo que foi dividido nesses dois pont
 As linguagens de programação utilizadas foram escolhidas com base nas experiências e conhecimentos dos membros. 
 
 ### Back-End
-Utilizamos dados em memória para poder fazer essa primeira versão do projeto. No futuro, substituíremos modificaremos esse aspecto. 
-  
+O Back-End foi feito em C# Web API .NET usando Clean Architecture.   
+Utilizamos Banco de dados em memória nessa primeira fase. Documentação via Swagger, Autenticação via JWT.  
+
   ### Front-End 
-O Front-End do projeto foi construído com Javascrip e HTML. Os visuais ainda estão em desenvolvimento e outros elementos ainda serão inseridos na tela de navegação dos clientes. 
-## Execução do projeto 
+O front end da aplicação foi construído com o framework Vue.js na versão 3,  junto do vite. Para consumo das API's foi utilizado o módulo fetch e para genrenciamento do carrinho foi utilizado o localstorage do próprio navegador.
+A estrutura de pastas seguiu o modelo de componentes, páginas e um arquivo para definição das rotas.
+  
+  ## Execução do projeto 
 
 Para acessar o aplicativo, basta entrar no link. 
 
