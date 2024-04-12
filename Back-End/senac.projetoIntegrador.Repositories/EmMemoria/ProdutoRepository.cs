@@ -13,7 +13,8 @@ namespace senac.projetoIntegrador.Repositories.EmMemoria
                 Nome = "Classic Burguer",
                 Descricao = "Um hambúrguer de carne grelhada, alface, tomate e queijo cheddar.",
                 Preco = 9.99M,
-                CaminhoImagem = "https://github.com/ruanwillians/senacProjeto/blob/main/Front-End/src/assets/burger5.png?raw=true"
+                CaminhoImagem = "https://github.com/ruanwillians/senacProjeto/blob/main/Front-End/src/assets/burger5.png?raw=true",
+                PalavrasChave = "alface, tomate, cheddar"
             },
             new Produto
             {
@@ -21,7 +22,8 @@ namespace senac.projetoIntegrador.Repositories.EmMemoria
                 Nome = "Cheesebuguer",
                 Descricao = "Hambúrguer de carne, queijo, alface, tomate e maionese em um pão de hambúrguer.",
                 Preco = 8.99M,
-                CaminhoImagem = "https://github.com/ruanwillians/senacProjeto/blob/main/Front-End/src/assets/burger1.png?raw=true"
+                CaminhoImagem = "https://github.com/ruanwillians/senacProjeto/blob/main/Front-End/src/assets/burger1.png?raw=true",
+                PalavrasChave = "alface, tomate, maionese"
             },
             new Produto
             {
