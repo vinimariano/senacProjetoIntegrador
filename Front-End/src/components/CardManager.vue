@@ -4,9 +4,9 @@
       <img :src="caminhoImagem" alt="Burger Image" />
     </div>
     <div class="burger-details">
-      <h3>{{ nome }}</h3>
-      <h4>Preço: {{ preco }}</h4>
-      <button class="button" @click="addCart">Adicionar ao carrinho</button>
+      <h2>{{ nome }}</h2>
+      <h4>Preço: $ {{ preco }}</h4>
+      <Button @click="addCart">Excluir Produto</Button>
     </div>
   </div>
 </template>
@@ -14,10 +14,8 @@
 <script setup>
 import { ref, defineProps } from 'vue';
 import Swal from 'sweetalert2';
-import { useRouter } from 'vue-router';
 import Button from './Button.vue';
 
-const router = useRouter();
 const props = defineProps(['nome', 'preco', 'caminhoImagem', 'descricao']);
 
 const nome = ref(props.nome);
@@ -34,16 +32,15 @@ const addCart = () => {
     descricao: descricao.value,
   };
 
-
   let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
   carrinho.push(item);
   localStorage.setItem('carrinho', JSON.stringify(carrinho));
 
   Swal.fire({
-    title: 'Produto adicionado com sucesso ao carrinho',
+    title: 'Você tem certeza que deseja excluir o produto do seu cardápio?',
     showCancelButton: true,
-    confirmButtonText: 'Continuar comprando',
-    cancelButtonText: 'Ver carrinho',
+    confirmButtonText: 'Sim',
+    cancelButtonText: 'Voltar',
   }).then((result) => {
     if (result.isConfirmed) {
       // Continuar comprando
@@ -56,10 +53,10 @@ const addCart = () => {
 
 <style scoped>
 .burger-card {
-  background-color: white;
+  background-color: #f7f7f7;
   flex: 1;
   border: 1px solid #ccc;
-  border-radius: 20px;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   margin: 1em 0.5em;
@@ -72,7 +69,6 @@ const addCart = () => {
   width: 100%;
   height: auto;
   margin-bottom: 10px;
-  border-radius: 11px;
 }
 
 .burger-details {
@@ -84,24 +80,21 @@ const addCart = () => {
   text-align: center;
 }
 
-.button {
-  margin-right: 2em;
-  margin-top: 1em;
-  font-size: 15px;
+button {
+  font-size: 17px;
   background-color: #9758a6;
-  width: 100%;
-  color: white;
+  color: #fff;
   border: none;
-  border-radius: 5px;
   padding: 15px;
+  border-radius: 5px;
   cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
 }
 
-.button:hover {
-  background-color: #8c4d9f;
+button:hover {
+  background-color: #9758f1;
 }
-
-
 
 @media (max-width: 1500px) {
   .burger-card {
@@ -110,14 +103,7 @@ const addCart = () => {
   }
 }
 
-@media (max-width: 1000px) {
-  .burger-card {
-    min-width: 35vw;
-    max-width: 35vw;
-  }
-}
-
-@media (max-width: 600px) {
+@media (max-width: 750px) {
   .burger-card {
     min-width: 80vw;
     max-width: 80vw;

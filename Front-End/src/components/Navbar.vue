@@ -1,35 +1,35 @@
 <template>
   <div>
     <div id="nav">
-      <router-link id="logo-url" to="/">
+      <router-link id="logo-url" :to="{ name: 'home' }">
         <img id="logo" :src="logo" />
       </router-link>
-      <router-link v-if="$route.path !== '/cart'" to="/cart">Ver carrinho</router-link>
-      <router-link v-if="$route.path !== '/products'" to="/products"
-        >Ver produtos</router-link
-      >
+      <router-link v-if="!isManagerPage" to="/cart">Carrinho</router-link>
+      <router-link to="/products">Produtos</router-link>
       <router-link @click="logout" to="/">Sair</router-link>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: "Navbar",
-  props: {
-    logo: String,
-  },
-  methods: {
-    logout() {
-      localStorage.clear();
-    },
-  },
+<script setup>
+import { computed } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+
+const route = useRoute();
+const router = useRouter();
+
+const logo = "src/assets/logo.png"
+
+const isManagerPage = computed(() => route.path === '/manager');
+
+const logout = () => {
+  localStorage.clear();
 };
 </script>
 
 <style scoped>
 #nav {
-  background-color: #fff;
+  background-color: #9758a6;
   border-bottom: 4px solid #111;
   padding: 15px 50px;
   display: flex;
@@ -48,13 +48,13 @@ export default {
 }
 
 #nav a {
-  color: #9758a6;
+  color: white;
   text-decoration: none;
   margin: 12px;
   transition: 0.5s;
 }
 
 #nav a:hover {
-  color: #9758f1;
+  color: #ba95ed;
 }
 </style>

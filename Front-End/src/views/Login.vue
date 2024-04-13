@@ -4,7 +4,7 @@
       <h1 id="title">Login</h1>
       <input type="text" placeholder="Login" class="input" v-model="data.login" />
       <input type="password" placeholder="Senha" class="input" v-model="data.senha" />
-      <button class="button" @click="login">Entrar</button>
+      <Button class="button" @click="login">Entrar</Button>
     </div>
   </div>
 </template>
@@ -13,6 +13,7 @@
 import loginBurger from "@/assets/bg-login.png";
 import { BASEURL } from "../../env";
 import { useRouter } from "vue-router";
+import Button from "../components/Button.vue";
 
 const router = useRouter();
 
@@ -46,7 +47,11 @@ async function login() {
 
 <style scoped>
 .container {
-  background-image: url("@/assets/bg-login.png");
+  background-image: url("@/assets/bg-login.jpg");
+  display: flex;
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   max-width: 100vw;
   margin: -3.2em;
@@ -72,20 +77,6 @@ async function login() {
   outline: none;
 }
 
-.button {
-  margin-top: 1em;
-  font-size: 15px;
-  background-color: #9758a6;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 15px;
-  cursor: pointer;
-}
-
-.button:hover {
-  background-color: #8c4d9f;
-}
 
 #title {
   color: #9758a6;
@@ -102,15 +93,15 @@ async function login() {
 
 @media (max-width: 1500px) {
   .form {
-    width: 50vw;
-    height: 40vh;
+    width: 30vw;
+    height: 70vh;
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 500px) {
   .form {
-    width: 80vw;
-    height: 40vh;
+    width: 100vw;
+    height: 100vh;
   }
 }
 </style>

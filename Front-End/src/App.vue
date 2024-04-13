@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="body">
     <Navbar v-if="$route.path !== '/'" :logo="logo" :alt="app_name" />
     <div class="main-container">
       <router-view></router-view>
@@ -35,8 +35,13 @@ export default {
   box-sizing: border-box;
 }
 
+.body {
+  background-color: #f7f7f7;
+  min-height: 100vh;
+}
+
 .main-container {
-  margin: 50px;
+  margin: 50px 50px 0 50px;
   min-height: 250px;
 }
 

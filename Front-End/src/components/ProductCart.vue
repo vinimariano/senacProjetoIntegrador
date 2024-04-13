@@ -1,9 +1,10 @@
 <template>
-  <div class="container">
+  <div class="containers">
     <div class="burger">
       <img id="image" :src="caminhoImagem" alt="Burger Image" />
       <div class="name-price">
         <h1 id="title">{{ nome }}</h1>
+        <h6 id="description">{{ descricao }}</h6>
         <h1 id="price">$: {{ preco }}</h1>
       </div>
     </div>
@@ -22,19 +23,21 @@ function removeItem(item) {
 </script>
 
 <style scoped>
-.container {
+.containers {
   border-radius: 20px;
-  width: 90vw;
+  width: 80vw;
   margin: 1em;
-  background-color: #f7f7f7;
+  background-color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center
 }
 
 .button {
   margin-right: 2em;
   margin-top: 1em;
+  height: 4em;
   font-size: 15px;
   background-color: #9758a6;
   color: white;
@@ -62,38 +65,80 @@ function removeItem(item) {
 
 #title {
   color: #9758a6;
+  margin-bottom: .3em;
 }
 
 #price {
   color: grey;
 }
 
+#description {
+  color: grey;
+  margin-top: .1em;
+  margin-bottom: 1em;
+  font-size: 12px;
+}
+
 #image {
   padding: 1em;
 }
 
-@media (max-width: 660px) {
+@media (max-width: 800px) {
   #image {
-    width: 150px;
+    width: 120px;
+    margin: 1em;
   }
 
   #title,
   #price {
     font-size: 20px;
+    margin-bottom: .5em;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
+
+  .burger {
+    width: 100%;
+
+  }
+
+  .containers {
+    border-radius: 20px;
+    margin: 1em;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center
+  }
+
+  .name-price {
+    margin-top: 1em;
+    display: flex;
+    align-items: flex-start;
+
+  }
+
   #title,
   #price {
-    font-size: 12px;
+    font-size: 20px;
+    margin: 0;
   }
+
+  #image {
+    margin: 0;
+    width: 100px;
+    height: 100px;
+  }
+
   .button {
-    margin-top: 1em;
-    font-size: 12px;
-    padding: 5px;
-    cursor: pointer;
-    margin-left: -1em;
+    padding: 0;
+    width: 90%;
+    margin-left: 2em;
+    margin-bottom: 1em;
+    height: 3em;
   }
+
 }
 </style>

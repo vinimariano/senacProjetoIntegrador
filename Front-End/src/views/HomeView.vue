@@ -1,16 +1,15 @@
 <template>
   <Banner />
   <div class="container">
-    <h1 id="title">OFERTAS</h1>
+    <h1 id="title">RECOMENDAÇÕES</h1>
     <div class="burgers">
-      <Card
-        v-for="burger in hamburgers"
-        :id="burger.id"
-        :nome="burger.nome"
-        :preco="burger.preco"
-        :caminhoImagem="burger.caminhoImagem"
-        :descricao="burger.descricao"
-      />
+      <Card v-for="burger in hamburgers" :id="burger.id" :nome="burger.nome" :preco="burger.preco"
+        :caminhoImagem="burger.caminhoImagem" :descricao="burger.descricao" />
+    </div>
+    <h1 id="title">CARDÁPIO</h1>
+    <div class="burgers">
+      <Card v-for="burger in hamburgers" :id="burger.id" :nome="burger.nome" :preco="burger.preco"
+        :caminhoImagem="burger.caminhoImagem" :descricao="burger.descricao" />
     </div>
   </div>
 </template>

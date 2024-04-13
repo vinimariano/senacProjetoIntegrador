@@ -3,27 +3,23 @@
   <div v-if="!created" class="container">
     <div v-for="product in products" :key="product.id">
       <div class="products">
-        <ProductCart
-          :nome="product.nome"
-          :preco="product.preco"
-          :caminhoImagem="product.caminhoImagem"
-          :descricao="product.descricao"
-          :onRemove="() => removeItem(product)"
-        />
+        <ProductCart :nome="product.nome" :preco="product.preco" :caminhoImagem="product.caminhoImagem"
+          :descricao="product.descricao" :onRemove="() => removeItem(product)" />
       </div>
     </div>
-    <button v-if="products" class="button" @click="createOrder">
-      Finalizar pedido {{ `$ ${calculateTotal()}` }}
-    </button>
-    <div class="container" v-else>
+    <div class="action" v-if="products && products.length > 0">
+      <Button class="button" @click="createOrder">
+        Finalizar pedido {{ `$ ${calculateTotal()}` }}
+      </Button>
+    </div>
+    <div class="container no-content" v-else>
       <span id="created">"Seu carrinho esta vazio"</span>
-      <button @click="goToHome" class="button">Voltar para Home</button>
+      <Button style="margin-left: 2em;" @click="goToHome" class="button">Voltar para Home</Button>
     </div>
   </div>
-  <div class="container" v-else>
-    <span id="created"
-      >Pedido criado com sucesso!
-      <button @click="goToHome" class="button">Voltar para Home</button>
+  <div class="container check" v-else>
+    <span id="created">Pedido criado com sucesso!
+      <Button @click="goToHome" class="button">Voltar para Home</Button>
     </span>
   </div>
 </template>
@@ -36,6 +32,7 @@ import { BASEURL } from "../../env";
 import VueToast from "vue-toast-notification";
 import "vue-toast-notification/dist/theme-sugar.css";
 import { useRouter } from "vue-router";
+import Button from "../components/Button.vue";
 
 const router = useRouter();
 
@@ -89,12 +86,31 @@ function goToHome() {
 </script>
 
 <style scoped>
-#container {
+.container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end;
-  margin-top: 2em;
+  justify-content: space-between;
+  align-items: space-between;
+  margin-top: 4em;
+}
+
+.action {
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+.check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6em;
+}
+
+.no-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3em;
 }
 
 .button {
