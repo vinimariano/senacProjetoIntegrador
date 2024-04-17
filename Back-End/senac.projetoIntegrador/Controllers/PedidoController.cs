@@ -24,11 +24,11 @@ namespace senac.projetoIntegrador.Controllers
                 return BadRequest();
             }
 
-            var i = 0;
+            int i = 0;
             decimal total = 0;
             while (i < pedido.Produtos.Count)
             {
-                total = total + pedido.Produtos[i].Preco;
+                total = total + (pedido.Produtos[i].Produto.Preco * pedido.Produtos[i].Quantidade);
                 i++;
             }
             pedido.Total = total;

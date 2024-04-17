@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace senac.projetoIntegrador.Domain.Models
+﻿namespace senac.projetoIntegrador.Domain.Models
 {
     public class Usuario
     {

@@ -51,6 +51,16 @@ namespace senac.projetoIntegrador.Repositories.EmMemoria
             }
         };
 
+        public int Create(Produto produto)
+        {
+            int maxId = _bancoDeDados.Max(t => t.Id);
+
+            produto.Id = maxId + 1;
+            _bancoDeDados.Add(produto);
+
+            return produto.Id;
+        }
+
         public List<Produto> List()
         {
             return _bancoDeDados;
