@@ -57,10 +57,16 @@ const showAddProductModal = () => {
     title: 'Adicionar Produto',
     html:
       `<input id="nome" class="swal2-input" placeholder="Nome do produto">
-       <input id="preco" class="swal2-input" type="number" placeholder="Preço do produto">
-       <textarea id="descricao" class="swal2-textarea" placeholder="Descrição do produto"></textarea>
-       <p>Selecione a Imagem:</p>
-       <input id="imagem" class="swal2-file" type="file" accept="image/*" placeholder="Imagem do produto">`,
+     <input id="preco" class="swal2-input" type="number" placeholder="Preço do produto">
+     <textarea id="descricao" class="swal2-textarea" placeholder="Descrição do produto"></textarea>
+     <p style="margin: .5em 2em">Selecione a Imagem:</p>
+     <div id="opcoesImagem" style="display: flex; justify-content: space-between;">
+       <label style="display: flex; flex-direction: column; align-items: center;"><input type="radio" name="imagem" value="imagem1"> <img src="https://github.com/ruanwillians/senacProjeto/blob/main/Front-End/src/assets/burger1.png?raw=true" style="max-width: 100px;"></label>
+       <label style="display: flex; flex-direction: column; align-items: center;"><input type="radio" name="imagem" value="imagem2">  <img src="https://github.com/ruanwillians/senacProjeto/blob/main/Front-End/src/assets/burger4.png?raw=true" style="max-width: 100px;"></label>
+       <label style="display: flex; flex-direction: column; align-items: center;"><input type="radio" name="imagem" value="imagem3">  <img src="https://github.com/ruanwillians/senacProjeto/blob/main/Front-End/src/assets/burger6.png?raw=true" style="max-width: 100px;"></label>
+       <label style="display: flex; flex-direction: column; align-items: center;"><input type="radio" name="imagem" value="imagem4">  <img src="https://github.com/ruanwillians/senacProjeto/blob/main/Front-End/src/assets/burger2.png?raw=true" style="max-width: 100px;"></label>
+     </div>
+     <div id="previewImagem"></div>`,
     showCancelButton: true,
     cancelButtonText: 'Cancelar',
     confirmButtonText: 'Cadastrar',
@@ -69,14 +75,32 @@ const showAddProductModal = () => {
       const nome = Swal.getPopup().querySelector('#nome').value;
       const preco = Swal.getPopup().querySelector('#preco').value;
       const descricao = Swal.getPopup().querySelector('#descricao').value;
-      const imagem = Swal.getPopup().querySelector('#imagem').files[0];
+      const imagemSelecionada = Swal.getPopup().querySelector('input[name="imagem"]:checked');
 
-      return { nome, preco, imagem, descricao };
+      let imagemSrc;
+      if (imagemSelecionada) {
+        imagemSrc = imagemSelecionada.value;
+      }
+
+      return { nome, preco, imagemSrc, descricao };
+    },
+    didOpen: () => {
+      const opcoesImagem = document.getElementById('opcoesImagem');
+      opcoesImagem.addEventListener('change', () => {
+        const imagemSelecionada = opcoesImagem.querySelector('input[name="imagem"]:checked');
+        const previewImagem = document.getElementById('previewImagem');
+        if (imagemSelecionada) {
+          const imagemSrc = imagemSelecionada.value;
+          previewImagem.innerHTML = `<img src="${imagemSrc}" style="max-width: 100%; max-height: 200px;">`;
+        } else {
+          previewImagem.innerHTML = '';
+        }
+      });
     }
   }).then((result) => {
     if (result.isConfirmed) {
-      const { nome, preco, imagem, descricao } = result.value;
-      criarProduto(nome, preco, imagem, descricao); // Chama a função para criar o produto
+      const { nome, preco, imagemSrc, descricao } = result.value;
+      criarProduto(nome, preco, imagemSrc, descricao);
     }
   });
 }
@@ -166,6 +190,22 @@ const criarProduto = async (nome, preco, imagem, descricao) => {
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 650px) {
+  .header-page {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  #title {
+    margin-bottom: -.2em;
+  }
+
+  .burgers {
+    margin-top: 1em;
   }
 }
 </style>
