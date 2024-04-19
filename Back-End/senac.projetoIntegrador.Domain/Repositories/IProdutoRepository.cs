@@ -5,5 +5,7 @@ namespace senac.projetoIntegrador.Domain.Repositories
     public interface IProdutoRepository
     {
         List<Produto> List();
+        List<Produto> ListByKeyword(string palavraChave);
+        int Create(Produto produto);
     }
 }
