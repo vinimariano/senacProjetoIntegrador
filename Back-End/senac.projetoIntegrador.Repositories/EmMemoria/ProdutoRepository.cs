@@ -31,7 +31,8 @@ namespace senac.projetoIntegrador.Repositories.EmMemoria
                 Nome = "Bacon Burguer",
                 Descricao = "Hambúrguer de carne coberto com bacon crocante, queijo, alface, tomate e maionese, servido em um pão de hambúrguer.",
                 Preco = 9.99M,
-                CaminhoImagem = "https://github.com/ruanwillians/senacProjeto/blob/main/Front-End/src/assets/burger2.png?raw=true"
+                CaminhoImagem = "https://github.com/ruanwillians/senacProjeto/blob/main/Front-End/src/assets/burger2.png?raw=true",
+                PalavrasChave = "bacon, queijo, alface, tomate"
             },
             new Produto
             {
@@ -39,7 +40,8 @@ namespace senac.projetoIntegrador.Repositories.EmMemoria
                 Nome = "Veggie Burguer",
                 Descricao = "Hambúrguer vegetariano à base de vegetais, acompanhado de queijo, alface, tomate e maionese em um pão de hambúrguer.",
                 Preco = 6.99M,
-                CaminhoImagem = "https://github.com/ruanwillians/senacProjeto/blob/main/Front-End/src/assets/burger6.png?raw=true"
+                CaminhoImagem = "https://github.com/ruanwillians/senacProjeto/blob/main/Front-End/src/assets/burger6.png?raw=true",
+                PalavrasChave = "vegetais, queijo, alface, tomate"
             },
             new Produto
             {
@@ -64,6 +66,17 @@ namespace senac.projetoIntegrador.Repositories.EmMemoria
         public List<Produto> List()
         {
             return _bancoDeDados;
+        }
+
+        public List<Produto> ListByKeyword(string palavraChave)
+        {
+            return _bancoDeDados
+                .Where
+                (
+                    t => t.PalavrasChave != null && 
+                    t.PalavrasChave.ToLower().Contains(palavraChave.ToLower())
+                )
+                .ToList();   
         }
     }
 }

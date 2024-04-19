@@ -21,5 +21,11 @@ namespace senac.projetoIntegrador.Repositories.EmMemoria
             //Retorna o Id
             return pedido.Id;
         }
+
+        public List<Pedido> List(string loginUsuario)
+        {
+            return _bancoDeDados.Where(t => t.LoginUsuario == loginUsuario)
+                .OrderByDescending(t => t.Id).ToList();
+        }
     }
 }

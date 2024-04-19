@@ -5,7 +5,7 @@ using senac.projetoIntegrador.Domain.Repositories;
 
 namespace senac.projetoIntegrador.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     [Authorize]
     public class PedidoController : ControllerBase
@@ -32,10 +32,25 @@ namespace senac.projetoIntegrador.Controllers
                 i++;
             }
             pedido.Total = total;
+            pedido.LoginUsuario = User.Claims?
+                .FirstOrDefault()?
+                .Value;
+            pedido.DataPedido = DateTime.Now;
 
             pedido.Id = _pedidoRepository.Create(pedido);
 
             return Created("", pedido.Id);
+        }
+
+        [HttpGet]
+        public IActionResult List()
+        {
+            string? loginUsuario =
+               User.Claims?
+               .FirstOrDefault()?
+               .Value;
+
+            return Ok(_pedidoRepository.List(loginUsuario));
         }
     }
 }
