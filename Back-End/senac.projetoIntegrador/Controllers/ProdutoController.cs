@@ -68,7 +68,8 @@ namespace senac.projetoIntegrador.Controllers
                     }
                 }
 
-                if (sugestoes.Count >= 3)
+                //Retorna 5 sugestões
+                if (sugestoes.Count >= 5)
                     break;
             }
 
@@ -83,7 +84,7 @@ namespace senac.projetoIntegrador.Controllers
                 return BadRequest();
             }
 
-            _produtoRepository.Create(produto);
+            produto.Id =_produtoRepository.Create(produto);
 
             return Created("", produto.Id);
         }

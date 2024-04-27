@@ -1,5 +1,6 @@
 using Microsoft.OpenApi.Models;
 using senac.projetoIntegrador.Authentication;
+using senac.projetoIntegrador.Domain.Models;
 using senac.projetoIntegrador.Domain.Repositories;
 using senac.projetoIntegrador.Repositories.EmMemoria;
 
@@ -7,6 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+
+//Configuration
+builder.Services.Configure<ConfigurationModel>(
+    builder.Configuration.GetSection("DBConfiguration"));
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "apiProjetoIntegrador", Version = "v1" });
@@ -62,8 +68,8 @@ ConfigureJwt configure =
 //Registra as dependências
 builder.Services.AddSingleton<JwtSettings>(settings);
 builder.Services.AddSingleton<ConfigureJwt>(configure);
-builder.Services.AddSingleton<IProdutoRepository, ProdutoRepository>();
-builder.Services.AddSingleton<IPedidoRepository, PedidoRepository>();
+builder.Services.AddSingleton<IProdutoRepository, senac.projetoIntegrador.Repositories.BancoDeDados.ProdutoRepository>();
+builder.Services.AddSingleton<IPedidoRepository, senac.projetoIntegrador.Repositories.BancoDeDados.PedidoRepository>();
 
 //Adiciona os serviços de autenticação JWT
 configure.ConfigureJwtMethod(builder.Services);
