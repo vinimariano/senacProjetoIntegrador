@@ -11,7 +11,7 @@ GO
 
 -- Cria tabela produto
 CREATE TABLE VersaoFinal.Produto(
-    Id INT PRIMARY KEY, -- Coluna com o id do produto
+    Id INT PRIMARY KEY IDENTITY(1,1), -- Coluna com o id do produto
     Nome Varchar(100),  -- Nome do pedido
     Descricao Varchar(200), -- Descrição do produto que é comprado 
     Preco Decimal(10,2),   -- Preço unitário do pedido 
@@ -29,7 +29,7 @@ CREATE TABLE VersaoFinal.Pedido(
 
 -- Cria tabela de PedidoProduto
 CREATE TABLE VersaoFinal.PedidoProduto(
-    IdPedido int IDENTITY(1,1),               --Id do pedido solicitado
+    IdPedido int,               --Id do pedido solicitado
     IdProduto int,              --Id do Produto solicitado
     Preco Decimal(10,2),        --Preço do que foi gasto
     QuantidadeProduto Int       --Quantidade de itens 
