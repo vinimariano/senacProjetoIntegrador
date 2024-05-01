@@ -5,7 +5,7 @@
     </div>
     <div class="burger-details">
       <h3>{{ nome }}</h3>
-      <h4>Preço: {{ preco }}</h4>
+      <h4>Preço: R$: {{ preco }},00</h4>
       <button class="button" @click="addCart">Adicionar ao carrinho</button>
     </div>
   </div>
@@ -18,7 +18,7 @@ import { useRouter } from 'vue-router';
 import Button from './Button.vue';
 
 const router = useRouter();
-const props = defineProps(['nome', 'preco', 'caminhoImagem', 'descricao']);
+const props = defineProps(['id', 'nome', 'preco', 'caminhoImagem', 'descricao']);
 
 const nome = ref(props.nome);
 const preco = ref(props.preco);
@@ -70,7 +70,8 @@ const addCart = () => {
 
 .burger-image img {
   width: 100%;
-  height: auto;
+  height: 275px;
+  object-fit: cover;
   margin-bottom: 10px;
   border-radius: 11px;
 }

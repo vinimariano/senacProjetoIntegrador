@@ -23,7 +23,7 @@ import Button from "../components/Button.vue";
 import Swal from 'sweetalert2';
 
 const hamburgers = ref([]);
-const loading = ref(false); // Variável para controlar o loading
+const loading = ref(false);
 
 onBeforeMount(async () => {
   hamburgers.value = await getBurgers();
@@ -31,7 +31,7 @@ onBeforeMount(async () => {
 
 async function getBurgers() {
   try {
-    const response = await fetch(`${BASEURL}/api/Produto`, {
+    const response = await fetch(`${BASEURL}/api/Produto/List`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -59,14 +59,114 @@ const showAddProductModal = () => {
       `<input id="nome" class="swal2-input" placeholder="Nome do produto">
      <input id="preco" class="swal2-input" type="number" placeholder="Preço do produto">
      <textarea id="descricao" class="swal2-textarea" placeholder="Descrição do produto"></textarea>
+     <input id="palavraChave" class="swal2-input" placeholder="Palavra chave de recomendação">
      <p style="margin: .5em 2em">Selecione a Imagem:</p>
-     <div id="opcoesImagem" style="display: flex; justify-content: space-between;">
-       <label style="display: flex; flex-direction: column; align-items: center;"><input type="radio" name="imagem" value="imagem1"> <img src="https://github.com/ruanwillians/senacProjeto/blob/main/Front-End/src/assets/burger1.png?raw=true" style="max-width: 100px;"></label>
-       <label style="display: flex; flex-direction: column; align-items: center;"><input type="radio" name="imagem" value="imagem2">  <img src="https://github.com/ruanwillians/senacProjeto/blob/main/Front-End/src/assets/burger4.png?raw=true" style="max-width: 100px;"></label>
-       <label style="display: flex; flex-direction: column; align-items: center;"><input type="radio" name="imagem" value="imagem3">  <img src="https://github.com/ruanwillians/senacProjeto/blob/main/Front-End/src/assets/burger6.png?raw=true" style="max-width: 100px;"></label>
-       <label style="display: flex; flex-direction: column; align-items: center;"><input type="radio" name="imagem" value="imagem4">  <img src="https://github.com/ruanwillians/senacProjeto/blob/main/Front-End/src/assets/burger2.png?raw=true" style="max-width: 100px;"></label>
-     </div>
-     <div id="previewImagem"></div>`,
+     <div id="opcoesImagem" style="display: flex; justify-content: space-between; flex-wrap: wrap; margin: 35px">
+      <label style="display: flex; flex-direction: column; align-items: center;">
+  <input type="radio" name="imagem" value="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/aperitivos/aipim_frito.PNG?raw=true">
+  <img src="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/aperitivos/aipim_frito.PNG?raw=true" style="object-fit: cover; width: 100px; height: 100px">
+</label>
+
+<label style="display: flex; flex-direction: column; align-items: center;">
+  <input type="radio" name="imagem" value="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/aperitivos/polenta_frita.PNG?raw=true">
+  <img src="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/aperitivos/polenta_frita.PNG?raw=true" style="object-fit: cover; width: 100px; height: 100px">
+</label>
+
+<label style="display: flex; flex-direction: column; align-items: center;">
+  <input type="radio" name="imagem" value="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/aperitivos/onion_rings.PNG?raw=true">
+  <img src="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/aperitivos/onion_rings.PNG?raw=true" style="object-fit: cover; width: 100px; height: 100px">
+</label>
+
+<label style="display: flex; flex-direction: column; align-items: center;">
+  <input type="radio" name="imagem" value="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/aperitivos/ketchup.PNG?raw=true">
+  <img src="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/aperitivos/ketchup.PNG?raw=true" style="object-fit: cover; width: 100px; height: 100px">
+</label>
+
+<label style="display: flex; flex-direction: column; align-items: center;">
+  <input type="radio" name="imagem" value="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/bebidas/agua_sem_gas.PNG?raw=true">
+  <img src="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/bebidas/agua_sem_gas.PNG?raw=true" style="object-fit: cover; width: 100px; height: 100px">
+</label>
+
+<label style="display: flex; flex-direction: column; align-items: center;">
+  <input type="radio" name="imagem" value="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/bebidas/guarana_lata.PNG?raw=true">
+  <img src="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/bebidas/guarana_lata.PNG?raw=true" style="object-fit: cover; width: 100px; height: 100px">
+</label>
+
+<label style="display: flex; flex-direction: column; align-items: center;">
+  <input type="radio" name="imagem" value="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/aperitivos/maionese.PNG?raw=true">
+  <img src="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/aperitivos/maionese.PNG?raw=true" style="object-fit: cover; width: 100px; height: 100px">
+</label>
+
+<label style="display: flex; flex-direction: column; align-items: center;">
+  <input type="radio" name="imagem" value="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/aperitivos/mostarda.PNG?raw=true">
+  <img src="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/aperitivos/mostarda.PNG?raw=true" style="object-fit: cover; width: 100px; height: 100px">
+</label>
+
+<label style="display: flex; flex-direction: column; align-items: center;">
+  <input type="radio" name="imagem" value="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/bebidas/agua_com_gas.PNG?raw=true">
+  <img src="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/bebidas/agua_com_gas.PNG?raw=true" style="object-fit: cover; width: 100px; height: 100px">
+</label>
+
+<label style="display: flex; flex-direction: column; align-items: center;">
+  <input type="radio" name="imagem" value="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/bebidas/coca_lata_diet.PNG?raw=true">
+  <img src="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/bebidas/coca_lata_diet.PNG?raw=true" style="object-fit: cover; width: 100px; height: 100px">
+</label>
+
+<label style="display: flex; flex-direction: column; align-items: center;">
+  <input type="radio" name="imagem" value="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/bebidas/fanta_uva.PNG?raw=true">
+  <img src="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/bebidas/fanta_uva.PNG?raw=true" style="object-fit: cover; width: 100px; height: 100px">
+</label>
+
+<label style="display: flex; flex-direction: column; align-items: center;">
+  <input type="radio" name="imagem" value="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/bebidas/coca_2litros.PNG?raw=true">
+  <img src="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/bebidas/coca_2litros.PNG?raw=true" style="object-fit: cover; width: 100px; height: 100px">
+</label>
+
+<label style="display: flex; flex-direction: column; align-items: center;">
+  <input type="radio" name="imagem" value="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/lanches/cachorro_quente_normal.PNG?raw=true">
+  <img src="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/lanches/cachorro_quente_normal.PNG?raw=true" style="object-fit: cover; width: 100px; height: 100px">
+</label>
+
+<label style="display: flex; flex-direction: column; align-items: center;">
+  <input type="radio" name="imagem" value="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/lanches/cachorro_quente_prensado.PNG?raw=true">
+  <img src="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/lanches/cachorro_quente_prensado.PNG?raw=true" style="object-fit: cover; width: 100px; height: 100px">
+</label>
+
+<label style="display: flex; flex-direction: column; align-items: center;">
+  <input type="radio" name="imagem" value="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/lanches/hamburguer_frango.PNG?raw=true">
+  <img src="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/lanches/hamburguer_frango.PNG?raw=true" style="object-fit: cover; width: 100px; height: 100px">
+</label>
+
+<label style="display: flex; flex-direction: column; align-items: center;">
+  <input type="radio" name="imagem" value="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/lanches/xis_coracao.PNG?raw=true">
+  <img src="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/lanches/xis_coracao.PNG?raw=true" style="object-fit: cover; width: 100px; height: 100px">
+</label>
+
+<label style="display: flex; flex-direction: column; align-items: center;">
+  <input type="radio" name="imagem" value="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/lanches/hamburguer_duplo.PNG?raw=true">
+  <img src="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/lanches/hamburguer_duplo.PNG?raw=true" style="object-fit: cover; width: 100px; height: 100px">
+</label>
+
+<label style="display: flex; flex-direction: column; align-items: center;">
+  <input type="radio" name="imagem" value="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/lanches/xis_frango.PNG?raw=true">
+  <img src="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/lanches/xis_frango.PNG?raw=true" style="object-fit: cover; width: 100px; height: 100px">
+</label>
+
+<label style="display: flex; flex-direction: column; align-items: center;">
+  <input type="radio" name="imagem" value="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/lanches/xis_calabresa.PNG?raw=true">
+  <img src="https://github.com/vinimariano/senacProjetoIntegrador/blob/main/Banco-de-Dados/lanches/xis_calabresa.PNG?raw=true" style="object-fit: cover; width: 100px; height: 100px">
+</label>
+
+<label style="display: flex; flex-direction: column; align-items: center;">
+  <input type="radio" name="imagem" value="https://github.com/ruanwillians/senacProjeto/blob/main/Front-End/src/assets/burger6.png?raw=true">
+  <img src="https://github.com/ruanwillians/senacProjeto/blob/main/Front-End/src/assets/burger6.png?raw=true" style="object-fit: cover; width: 100px; height: 100px">
+</label>
+
+<label style="display: flex; flex-direction: column; align-items: center;">
+  <input type="radio" name="imagem" value="https://github.com/ruanwillians/senacProjeto/blob/main/Front-End/src/assets/burger2.png?raw=true">
+  <img src="https://github.com/ruanwillians/senacProjeto/blob/main/Front-End/src/assets/burger2.png?raw=true" style="object-fit: cover; width: 100px; height: 100px">
+</label>
+     </div>`,
     showCancelButton: true,
     cancelButtonText: 'Cancelar',
     confirmButtonText: 'Cadastrar',
@@ -75,6 +175,7 @@ const showAddProductModal = () => {
       const nome = Swal.getPopup().querySelector('#nome').value;
       const preco = Swal.getPopup().querySelector('#preco').value;
       const descricao = Swal.getPopup().querySelector('#descricao').value;
+      const palavraChave = Swal.getPopup().querySelector('#palavraChave').value;
       const imagemSelecionada = Swal.getPopup().querySelector('input[name="imagem"]:checked');
 
       let imagemSrc;
@@ -82,9 +183,12 @@ const showAddProductModal = () => {
         imagemSrc = imagemSelecionada.value;
       }
 
-      return { nome, preco, imagemSrc, descricao };
+      return { nome, preco, imagemSrc, descricao, palavraChave };
     },
     didOpen: () => {
+      const modalContent = document.querySelector('.swal2-html-container');
+      modalContent.style.display = 'flex';
+      modalContent.style.flexDirection = 'column';
       const opcoesImagem = document.getElementById('opcoesImagem');
       opcoesImagem.addEventListener('change', () => {
         const imagemSelecionada = opcoesImagem.querySelector('input[name="imagem"]:checked');
@@ -99,31 +203,34 @@ const showAddProductModal = () => {
     }
   }).then((result) => {
     if (result.isConfirmed) {
-      const { nome, preco, imagemSrc, descricao } = result.value;
-      criarProduto(nome, preco, imagemSrc, descricao);
+      const { nome, preco, imagemSrc, descricao, palavraChave } = result.value;
+      criarProduto(nome, preco, imagemSrc, descricao, palavraChave);
     }
   });
 }
+const criarProduto = async (nome, preco, imagem, descricao, palavraChave) => {
+  const body = {
+    "id": Math.floor(Math.random() * 1000),
+    "nome": nome,
+    "descricao": descricao,
+    "preco": preco,
+    "caminhoImagem": imagem,
+    "palavrasChave": palavraChave
+  }
 
-const criarProduto = async (nome, preco, imagem, descricao) => {
-  // Mostra o loading ao criar o produto
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: localStorage.getItem("token"),
+    },
+    body: JSON.stringify(body),
+  };
+
+  const response = await fetch(`${BASEURL}/api/Produto/Create`, requestOptions);
   loading.value = true;
 
   try {
-    const formData = new FormData();
-    formData.append('nome', nome);
-    formData.append('preco', preco);
-    formData.append('imagem', imagem);
-    formData.append('descricao', descricao);
-
-    const response = await fetch(`${BASEURL}/api/Produto`, {
-      method: "POST",
-      headers: {
-        Authorization: localStorage.getItem("token"),
-      },
-      body: formData,
-    });
-
     if (response.ok) {
       // Produto criado com sucesso
       loading.value = false; // Oculta o loading
