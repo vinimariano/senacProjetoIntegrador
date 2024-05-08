@@ -4,8 +4,14 @@
       <router-link id="logo-url" :to="{ name: 'home' }">
         <img id="logo" :src="logo" />
       </router-link>
-      <router-link v-if="!isManagerPage" to="/cart">Carrinho</router-link>
-      <router-link to="/products">Produtos</router-link>
+      <div v-if="isManagerPage">
+        <router-link to="/manager">Produtos</router-link>
+        <router-link to="/manager/orders">Pedidos</router-link>
+      </div>
+      <div v-else>
+        <router-link to="/cart">Carrinho</router-link>
+        <router-link to="/products">Produtos</router-link>
+      </div>
       <router-link @click="logout" to="/">Sair</router-link>
     </div>
   </div>
@@ -20,7 +26,7 @@ const router = useRouter();
 
 const logo = "src/assets/logo.png"
 
-const isManagerPage = computed(() => route.path === '/manager');
+const isManagerPage = computed(() => route.path === '/manager' || route.path === '/manager/orders');
 
 const logout = () => {
   localStorage.clear();

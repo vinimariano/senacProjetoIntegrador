@@ -5,7 +5,7 @@
     </div>
     <div class="burger-details">
       <h2>{{ nome }}</h2>
-      <h4>Preço: $ {{ preco }}</h4>
+      <h4>Preço: R$: {{ preco }},00</h4>
       <Button @click="addCart">Excluir Produto</Button>
     </div>
   </div>
@@ -67,8 +67,10 @@ const addCart = () => {
 
 .burger-image img {
   width: 100%;
-  height: auto;
+  height: 275px;
+  object-fit: cover;
   margin-bottom: 10px;
+  border-radius: 11px;
 }
 
 .burger-details {

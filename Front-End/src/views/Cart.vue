@@ -8,12 +8,12 @@
       </div>
     </div>
     <div class="action" v-if="products && products.length > 0">
-      <Button class="button" @click="createOrder">
-        Finalizar pedido {{ `$ ${calculateTotal()}` }}
-      </Button>
+      <button class="button" @click="createOrder">
+        Finalizar pedido {{ `R$ ${calculateTotal()},00` }}
+      </button>
     </div>
     <div class="container no-content" v-else>
-      <span id="created">"Seu carrinho esta vazio"</span>
+      <span id="created">"Seu carrinho está vazio"</span>
       <Button style="margin-left: 2em;" @click="goToHome" class="button">Voltar para Home</Button>
     </div>
   </div>
@@ -23,6 +23,7 @@
     </span>
   </div>
 </template>
+
 
 <script setup>
 import { ref } from "vue";
@@ -51,11 +52,24 @@ function removeItem(itemToRemove) {
 
 async function createOrder() {
   const body = {
-    produtos: products.value,
-    total: calculateTotal(),
+    "id": 0,
+    "dataPedido": new Date().toISOString(),
+    "produtos": products.value.map(produto => ({
+      "produto": {
+        "id": produto.id,
+        "nome": produto.nome,
+        "descricao": produto.descricao,
+        "preco": produto.preco,
+        "caminhoImagem": produto.caminhoImagem,
+        "palavrasChave": produto.nome
+      },
+      "quantidade": 1
+    })),
+    "total": calculateTotal(),
+    "loginUsuario": localStorage.getItem("token"),
   };
   try {
-    const response = await fetch(`${BASEURL}/api/Pedido`, {
+    const response = await fetch(`${BASEURL}/api/Pedido/Create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -63,7 +77,6 @@ async function createOrder() {
       },
       body: JSON.stringify(body),
     });
-
     if (response.ok) {
       created.value = true;
       localStorage.removeItem("carrinho");

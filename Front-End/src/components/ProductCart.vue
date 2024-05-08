@@ -5,7 +5,7 @@
       <div class="name-price">
         <h1 id="title">{{ nome }}</h1>
         <h6 id="description">{{ descricao }}</h6>
-        <h1 id="price">$: {{ preco }}</h1>
+        <h1 id="price">R$:{{ preco }},00</h1>
       </div>
     </div>
     <button class="button" @click="removeItem(props)">Remover</button>
@@ -81,6 +81,8 @@ function removeItem(item) {
 
 #image {
   padding: 1em;
+  height: 200px;
+  width: 200px;
 }
 
 @media (max-width: 800px) {
