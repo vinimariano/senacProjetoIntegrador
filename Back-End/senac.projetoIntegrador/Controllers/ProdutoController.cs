@@ -88,5 +88,13 @@ namespace senac.projetoIntegrador.Controllers
 
             return Created("", produto.Id);
         }
+
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            _produtoRepository.Delete(id);
+
+            return Ok();
+        }
     }
 }

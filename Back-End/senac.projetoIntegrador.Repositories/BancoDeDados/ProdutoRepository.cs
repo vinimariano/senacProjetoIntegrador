@@ -44,6 +44,19 @@ namespace senac.projetoIntegrador.Repositories.BancoDeDados
             return id;
         }
 
+        public void Delete(int id)
+        {
+            string sql = @"DELETE FROM
+	                [ProjetoIntegrador].[VersaoFinal].[Produto]
+                WHERE
+	                Id = @Id";
+
+            this.db.Execute(sql, new
+            {
+                Id = id
+            });            
+        }
+
         public List<Produto> List()
         {
             List<Produto> list =
