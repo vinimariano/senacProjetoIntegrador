@@ -22,7 +22,14 @@ namespace senac.projetoIntegrador.Controllers
             if
             (
                 usuario != null &&
-                usuario.Login.ToLower() == "senac" &&
+                (
+                    usuario.Login.ToLower() == "senac"  ||
+                    usuario.Login.ToLower() == "senac1" ||
+                    usuario.Login.ToLower() == "senac2" ||
+                    usuario.Login.ToLower() == "senac3" ||
+                    usuario.Login.ToLower() == "atendente" ||
+                    usuario.Login.ToLower() == "administrador" 
+                ) &&
                 usuario.Senha.ToLower() == _settings.SenhaPadrao.ToLower()
             )
             {

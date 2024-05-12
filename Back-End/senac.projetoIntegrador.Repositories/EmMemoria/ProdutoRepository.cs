@@ -63,6 +63,12 @@ namespace senac.projetoIntegrador.Repositories.EmMemoria
             return produto.Id;
         }
 
+        public void Delete(int id)
+        {
+            Produto produto = _bancoDeDados.FirstOrDefault(t => t.Id == id);
+            _bancoDeDados.Remove(produto);
+        }
+
         public List<Produto> List()
         {
             return _bancoDeDados;

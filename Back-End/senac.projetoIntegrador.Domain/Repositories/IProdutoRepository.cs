@@ -7,5 +7,6 @@ namespace senac.projetoIntegrador.Domain.Repositories
         List<Produto> List();
         List<Produto> ListByKeyword(string palavraChave);
         int Create(Produto produto);
+        void Delete(int id);
     }
 }
