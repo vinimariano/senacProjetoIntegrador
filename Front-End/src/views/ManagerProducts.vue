@@ -232,19 +232,17 @@ const criarProduto = async (nome, preco, imagem, descricao, palavraChave) => {
 
   try {
     if (response.ok) {
-      // Produto criado com sucesso
-      loading.value = false; // Oculta o loading
+      loading.value = false;
       Swal.fire('Sucesso!', 'Produto cadastrado com sucesso!', 'success');
-      // Atualiza a lista de produtos após criar o novo produto
       hamburgers.value = await getBurgers();
     } else {
       console.error("Erro ao criar produto. Código de status:", response.status);
-      loading.value = false; // Oculta o loading em caso de erro
+      loading.value = false;
       Swal.fire('Erro!', 'Ocorreu um erro ao cadastrar o produto.', 'error');
     }
   } catch (error) {
     console.error("Erro ao criar produto:", error);
-    loading.value = false; // Oculta o loading em caso de erro
+    loading.value = false;
     Swal.fire('Erro!', 'Ocorreu um erro ao cadastrar o produto.', 'error');
   }
 }

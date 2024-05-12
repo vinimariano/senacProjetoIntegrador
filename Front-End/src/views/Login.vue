@@ -35,7 +35,14 @@ async function login() {
     if (response.ok) {
       const responseData = await response.json();
       localStorage.setItem("token", `bearer ${responseData.bearerToken}`);
-      router.push("/products");
+      localStorage.setItem("permission", data.login);
+      if (data.login === 'administrador') {
+        router.push("/manager")
+      } else if (data.login === 'atendente') {
+        router.push("/attendant/home");
+      } else {
+        router.push("/products");
+      }
     } else {
       console.error("Erro na solicitação POST. Código de status:", response.status);
     }

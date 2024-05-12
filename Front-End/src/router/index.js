@@ -89,6 +89,61 @@ const router = createRouter({
       },
       component: ManagerOrders,
     },
+    {
+      path: "/attendant/orders",
+      name: "attendantOrders",
+      beforeEnter: (to, from, next) => {
+        const userToken = localStorage.getItem("token");
+        if (userToken) {
+          next();
+        } else {
+          next({ name: "manager" });
+        }
+      },
+      beforeEnter: (to, from, next) => {
+        const userToken = localStorage.getItem("token");
+        if (userToken) {
+          next();
+        } else {
+          next({ name: "login" });
+        }
+      },
+      component: ManagerOrders,
+    },
+    {
+      path: "/attendant/home",
+      name: "attendantHome",
+      beforeEnter: (to, from, next) => {
+        const userToken = localStorage.getItem("token");
+        if (userToken) {
+          next();
+        } else {
+          next({ name: "login" });
+        }
+      },
+      component: HomeView,
+    },
+    {
+      path: "/attendant/cart",
+      name: "attendantCart",
+      beforeEnter: (to, from, next) => {
+        const userToken = localStorage.getItem("token");
+        if (userToken) {
+          next();
+        } else {
+          next({ name: "login" });
+        }
+      },
+      beforeEnter: (to, from, next) => {
+        const userToken = localStorage.getItem("token");
+        if (userToken) {
+          next();
+        } else {
+          next({ name: "login" });
+        }
+      },
+      component: Cart,
+    },
   ],
 });
 

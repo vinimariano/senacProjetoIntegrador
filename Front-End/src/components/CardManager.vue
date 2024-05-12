@@ -6,7 +6,7 @@
     <div class="burger-details">
       <h2>{{ nome }}</h2>
       <h4>Preço: R$: {{ preco }},00</h4>
-      <Button @click="addCart">Excluir Produto</Button>
+      <Button @click="removeProduct(props)">Excluir Produto</Button>
     </div>
   </div>
 </template>
@@ -15,35 +15,39 @@
 import { ref, defineProps } from 'vue';
 import Swal from 'sweetalert2';
 import Button from './Button.vue';
+import { BASEURL } from "../../env";
 
-const props = defineProps(['nome', 'preco', 'caminhoImagem', 'descricao']);
+const props = defineProps(['id', 'nome', 'preco', 'caminhoImagem', 'descricao']);
 
 const nome = ref(props.nome);
 const preco = ref(props.preco);
 const caminhoImagem = ref(props.caminhoImagem);
 const descricao = ref(props.descricao);
 
-const addCart = () => {
-  const item = {
-    id: props.id,
-    nome: nome.value,
-    preco: preco.value,
-    caminhoImagem: caminhoImagem.value,
-    descricao: descricao.value,
-  };
-
-  let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-  carrinho.push(item);
-  localStorage.setItem('carrinho', JSON.stringify(carrinho));
-
+const removeProduct = async (product) => {
   Swal.fire({
     title: 'Você tem certeza que deseja excluir o produto do seu cardápio?',
     showCancelButton: true,
     confirmButtonText: 'Sim',
     cancelButtonText: 'Voltar',
-  }).then((result) => {
+  }).then(async (result) => {
     if (result.isConfirmed) {
-      // Continuar comprando
+      const response = await fetch(`${BASEURL}/api/Produto/Delete?id=${product.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: localStorage.getItem("token"),
+        }
+      });
+
+      if (response.status === 200) {
+        Swal.fire('Produto excluído com sucesso!', '', 'success');
+        setTimeout(() => {
+          window.location.reload()
+        }, 1500);
+      } else {
+        Swal.fire('Erro ao excluir o produto.', '', 'error');
+      }
     } else if (result.dismiss === 'cancel') {
       router.push('/cart');
     }
