@@ -1,7 +1,7 @@
 <template>
   <Banner />
   <div class="container">
-    <h1 id="title">RECOMENDAÇÕES</h1>
+    <h1 id="title" v-if="sugestions.length > 0">RECOMENDAÇÕES</h1>
     <div class="burgers">
       <Card v-for="burger in sugestions" :id="burger.id" :nome="burger.nome" :preco="burger.preco"
         :caminhoImagem="burger.caminhoImagem" :descricao="burger.descricao" />

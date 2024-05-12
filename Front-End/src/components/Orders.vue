@@ -4,11 +4,14 @@
       <h3>Pedido {{ order.id }}</h3>
     </div>
     <div class="header">
+      <h3>Feito por: {{ order.loginUsuario }}</h3>
+    </div>
+    <div class="header">
       <h3>Data: {{ formatdate(order.dataPedido) }}</h3>
     </div>
-    <div class="products" v-for="product in order.produtos">
-      <h4>{{ product.produto.nome }} - R$:{{ product.produto.preco }},00</h4>
-    </div>
+    <ul class="products" v-for="product in order.produtos">
+      <li>{{ product.produto.nome }} - R$:{{ product.produto.preco }},00</li>
+    </ul>
     <div class="total">
       <h2>Total: R$:{{ order.total }},00</h2>
     </div>
@@ -67,7 +70,7 @@ function formatdate(dataString) {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: fle;
+  justify-content: flex-start;
   text-align: center;
 }
 

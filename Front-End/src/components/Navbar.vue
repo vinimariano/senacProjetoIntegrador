@@ -4,9 +4,14 @@
       <router-link id="logo-url" :to="{ name: 'home' }">
         <img id="logo" :src="logo" />
       </router-link>
-      <div v-if="isManagerPage">
+      <div v-if="permission === 'administrador'">
         <router-link to="/manager">Produtos</router-link>
         <router-link to="/manager/orders">Pedidos</router-link>
+      </div>
+      <div v-else-if="permission === 'atendente'">
+        <router-link to="/attendant/home">Produtos</router-link>
+        <router-link to="/attendant/cart">Carrinho</router-link>
+        <router-link to="/attendant/orders">Pedidos</router-link>
       </div>
       <div v-else>
         <router-link to="/cart">Carrinho</router-link>
@@ -21,12 +26,9 @@
 import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
-const route = useRoute();
-const router = useRouter();
+const permission = localStorage.getItem("permission");
 
-const logo = "src/assets/logo.png"
-
-const isManagerPage = computed(() => route.path === '/manager' || route.path === '/manager/orders');
+const logo = permission === "administrador" || permission === 'atendente' ? "../src/assets/logo.png" : "src/assets/logo.png"
 
 const logout = () => {
   localStorage.clear();
