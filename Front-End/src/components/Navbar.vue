@@ -16,6 +16,7 @@
       <div v-else>
         <router-link to="/cart">Carrinho</router-link>
         <router-link to="/products">Produtos</router-link>
+        <router-link to="/orders">Pedidos</router-link>
       </div>
       <router-link @click="logout" to="/">Sair</router-link>
     </div>

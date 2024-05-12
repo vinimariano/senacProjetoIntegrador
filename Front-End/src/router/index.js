@@ -48,6 +48,27 @@ const router = createRouter({
       component: Cart,
     },
     {
+      path: "/orders",
+      name: "orders",
+      beforeEnter: (to, from, next) => {
+        const userToken = localStorage.getItem("token");
+        if (userToken) {
+          next();
+        } else {
+          next({ name: "manager" });
+        }
+      },
+      beforeEnter: (to, from, next) => {
+        const userToken = localStorage.getItem("token");
+        if (userToken) {
+          next();
+        } else {
+          next({ name: "login" });
+        }
+      },
+      component: ManagerOrders,
+    },
+    {
       path: "/manager",
       name: "manager",
       beforeEnter: (to, from, next) => {
