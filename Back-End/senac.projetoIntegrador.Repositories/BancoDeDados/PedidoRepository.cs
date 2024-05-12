@@ -47,9 +47,16 @@ namespace senac.projetoIntegrador.Repositories.BancoDeDados
 
         public List<Pedido> List(string loginUsuario)
         {
-            List<Pedido> listTabelaPedido =
-              this.db.Query<Pedido>
-              (@"
+            string where =
+                (
+                    loginUsuario.ToLower() == "atendente" ||
+                    loginUsuario.ToLower() == "administrador"
+                ) ?
+                "" 
+                : "WHERE" +
+                "       [LoginUsuario] = @LoginUsuario";
+
+            string sql = $@"
                    SELECT 
                        [Id]
                         ,[Total]
@@ -57,9 +64,12 @@ namespace senac.projetoIntegrador.Repositories.BancoDeDados
                         ,[DataPedido]
                     FROM 
                         [ProjetoIntegrador].[VersaoFinal].[Pedido]
-                    WHERE
-                        [LoginUsuario] = @LoginUsuario
-                ", new
+                    {where}
+                ";
+
+            List<Pedido> listTabelaPedido =
+              this.db.Query<Pedido>
+              (sql, new
               {
                   LoginUsuario = loginUsuario
               })?.ToList();
