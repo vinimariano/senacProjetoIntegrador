@@ -27,10 +27,7 @@ As linguagens de programação utilizadas foram escolhidas com base nas experiê
 
 ### Back-End
 O Back-End foi feito em C# Web API .NET usando Clean Architecture.   
-Usamos a biblioteca Dapper para comunicação com o Banco de Dados. Documentação via Swagger, Autenticação via JWT.  
-O link com a API pode ser consultado em: https://projetointegrador.ddns.net/swagger/index.html
-
-  
+Usamos a biblioteca Dapper para comunicação com o Banco de Dados. Documentação via Swagger, Autenticação via JWT.    
 
   ### Front-End 
 O front end da aplicação foi construído com o framework Vue.js na versão 3,  junto do vite. Para consumo das API's foi utilizado o módulo fetch e para genrenciamento do carrinho foi utilizado o localstorage do próprio navegador.
