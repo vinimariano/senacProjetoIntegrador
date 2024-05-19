@@ -21,8 +21,8 @@ O nosso produto é destinado para restaurantes e estabelecimentos alimentícios 
   **Administradores**,  **Clientes** e **Atendentes** são as três personas que buscamos atingir com essa nova versão do CodeClube. 
   
   ## A estrutura do projeto 
-Organizamos a pasta do projeto em dois três grupos: Front-end, Back-End e Banco de dados. 
-O trabalho é resultado dos esforços do grupo que foi dividido nesses dois pontos. 
+Organizamos a pasta do projeto em três grupos: Front-end, Back-End e Banco de dados. 
+O trabalho é resultado dos esforços do grupo que foi dividido nesses três pontos. 
 As linguagens de programação utilizadas foram escolhidas com base nas experiências e conhecimentos dos membros. 
 
 ### Back-End
@@ -37,7 +37,7 @@ A estrutura de pastas seguiu o modelo de componentes, páginas e um arquivo para
 
  Para esta etapa, foram construídas tabelas com base no modelo de entidade e relacionamento e a linguagem SQL. 
  Disponibilizamos o script para criação do banco de dados e tabelas, bem como o script de carga dos dados.
- Utilizamos um SQL Server , que está hospedado em uma nuvem da Microsoft Azure. 
+ Utilizamos um SQL Server, que está hospedado em uma nuvem da Microsoft Azure. 
   
   ## Execução do projeto 
 
